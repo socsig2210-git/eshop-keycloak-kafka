@@ -1,0 +1,62 @@
+version: "3.9"
+
+services:
+  eshop-frontend:
+    container_name: eshop-frontend
+    build:
+      context: ./frontend
+    restart: always
+    ports:
+      - "8000:80"
+    # networks:
+    #   - products
+
+  mysql-kc:
+    container_name: mysql-kc
+    image: mysql
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    environment:
+      # The user, password and database that Keycloak
+      # is going to create and use
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: keycloak_db
+      # Self-Explanatory
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - mysql-kc-volume:/var/lib/mysql
+    networks:
+      - kc-mysql-network
+
+  keycloak-w:
+    container_name: keycloak-w
+    image: jboss/keycloak
+    ports:
+      - 8182:8080
+    restart: unless-stopped
+    environment:
+      # User and password for the Administration Console
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      DB_VENDOR: mysql
+      DB_ADDR: mysql-kc
+      DB_PORT: 3306
+      # Same values as the mysql-kc service
+      DB_USER: admin
+      DB_PASSWORD: admin
+      DB_DATABASE: keycloak_db
+    depends_on:
+      - mysql-kc
+    volumes:
+      - keycloak-realm-data:/opt/jboss/keycloak/standalone/data 
+    networks:
+      - kc-mysql-network
+
+networks:
+  kc-mysql-network:
+
+volumes:
+  mysql-kc-volume:
+  keycloak-realm-data:
