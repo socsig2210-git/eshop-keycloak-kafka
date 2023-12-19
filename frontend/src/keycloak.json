@@ -1,11 +1,7 @@
 {
   "realm": "E-Shop",
   "auth-server-url": "http://localhost:8182/auth/",
-  "ssl-required": "external",
   "resource": "frontend-app",
-  "onLoad": "login-required",
-  "credentials": {
-    "secret": "6PP1lYj2D77DLWaiiiZCftP91QbRnBrX"
-  },
+  "public-client": true,
   "confidential-port": 0
 }

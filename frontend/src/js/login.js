@@ -26,7 +26,7 @@ function decodeJwt(jwtToken) {
       urlencoded.append("username", getUsernameLogin);
       urlencoded.append("password", getPasswordLogin);
       urlencoded.append("client_id", "frontend-app");
-      urlencoded.append("client_secret", "6PP1lYj2D77DLWaiiiZCftP91QbRnBrX");
+      // urlencoded.append("client_secret", "6PP1lYj2D77DLWaiiiZCftP91QbRnBrX");
       urlencoded.append("grant_type", "password");
   
       var requestOptions = {
@@ -65,7 +65,6 @@ function decodeJwt(jwtToken) {
     } catch (error) {
       console.log(error)
     }
-    return false
   }
   
   async function Register(e) {
@@ -155,10 +154,7 @@ function decodeJwt(jwtToken) {
       console.log(error)
     }
   
-    return false
   }
-
-
 
 function SelectLogin() {
     const loginForm = document.getElementById("login-form");
