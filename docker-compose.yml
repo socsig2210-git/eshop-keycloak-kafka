@@ -8,6 +8,9 @@ services:
     restart: always
     ports:
       - "8000:80"
+    # probably volume only for development?
+    volumes:
+      - ./frontend/src:/usr/local/apache2/htdocs/
     # networks:
     #   - products
 
