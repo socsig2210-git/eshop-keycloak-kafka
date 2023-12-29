@@ -26,7 +26,7 @@ function decodeJwt(jwtToken) {
       urlencoded.append("username", getUsernameLogin);
       urlencoded.append("password", getPasswordLogin);
       urlencoded.append("client_id", "frontend-app");
-      // urlencoded.append("client_secret", "6PP1lYj2D77DLWaiiiZCftP91QbRnBrX");
+      urlencoded.append("client_secret", "spxkUSHmR4D3955m1E6asFBVD0pMi0mU");
       urlencoded.append("grant_type", "password");
   
       var requestOptions = {
@@ -47,16 +47,17 @@ function decodeJwt(jwtToken) {
         //store in localstorage username, email, role (customer, seller) and refresh_token
         const decodeToken = await decodeJwt(token)
 
-        // localStorage.setItem("username", decodeToken.preferred_username)
         // localStorage.setItem("email", decodeToken.email)
-        localStorage.setItem("role", decodeToken.realm_access.roles[0])
-        localStorage.setItem("refresh_token", login.refresh_token)
+        localStorage.setItem("username", decodeToken.preferred_username)
+        localStorage.setItem('access_token', token)
+        localStorage.setItem('role', decodeToken.realm_access.roles[0])
+        localStorage.setItem('refresh_token', login.refresh_token)
 
-        console.log(localStorage)
+        // console.log(localStorage)
         //clear localStorage
         // localStorage.clear()
 
-        location.href = "http://localhost:8000/home.html"
+        location.href = "http://localhost:8000/"
       }else{
         const err = await response.json()
         console.log(err) 
@@ -131,7 +132,7 @@ function decodeJwt(jwtToken) {
           redirect: 'follow'
         };
     
-        const registerUser =  await fetch("http://localhost:8182/auth/admin/realms/e-shop/users", registerOptions)
+      const registerUser =  await fetch("http://localhost:8182/auth/admin/realms/e-shop/users", registerOptions)
         
         if(registerUser.ok){
           alert('register user is ok')

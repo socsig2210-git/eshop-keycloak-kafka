@@ -1,18 +1,24 @@
 version: "3.9"
 
 services:
-  eshop-frontend:
-    container_name: eshop-frontend
-    build:
-      context: ./frontend
-    restart: always
-    ports:
-      - "8000:80"
-    # probably volume only for development?
-    volumes:
-      - ./frontend/src:/usr/local/apache2/htdocs/
-    # networks:
-    #   - products
+  # eshop-frontend:
+  #   container_name: eshop-frontend
+  #   build:
+  #     context: ./frontend
+  #   restart: always
+  #   ports:
+  #     - "8000:80"
+  #   # probably volume only for development?
+  #   volumes:
+  #     - ./frontend/src:/usr/local/apache2/htdocs/
+  #   networks:
+  #     - products
+    
+  # eshop-frontend-react:
+  #   container_name: eshop-frontend-react
+  #   build: ./frontend-react
+  #   volumes:
+  #     - ./frontend-react:/app
 
   mysql-kc:
     container_name: mysql-kc

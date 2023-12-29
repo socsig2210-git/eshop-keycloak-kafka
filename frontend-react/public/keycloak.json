@@ -1,0 +1,7 @@
+{
+  "realm": "E-Shop",
+  "auth-server-url": "http://localhost:8182/auth/",
+  "resource": "frontend-app",
+  "public-client": true,
+  "confidential-port": 0
+}
