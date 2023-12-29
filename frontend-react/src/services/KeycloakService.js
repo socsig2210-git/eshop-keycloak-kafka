@@ -71,20 +71,47 @@ const registerRequest = async (userData) => {
     )
 };
 
-const introspectRequest = async (token) => {
+const introspectRequest = async(token) => {
   
+  // TODO: FIND IF THERE IS A WAY
   const response = await axios.post(
-    `${CLIENT_URL}/token/introspect`,
-    `token=${token}&client_id=frontend-app&client_secret=spxkUSHmR4D3955m1E6asFBVD0pMi0mU`,
+    `${CLIENT_URL}/auth`,
+    `client_id=frontend-app&client_secret=spxkUSHmR4D3955m1E6asFBVD0pMi0mU`,
     {
-      withCredentials: true,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Bearer ${token}`
       },
     }
   );
-  return response.data;
+
+  return response;
+
+  // const clientId = 'frontend-app';
+  //   const redirectUri = 'http://localhost:3000/callback'; // Adjust to your actual redirect URI
+  //   const responseType = 'code';
+  //   const scope = 'openid profile email';
+
+  //   // Construct the authentication URL
+  //   const authUrl = `http://localhost:8182/auth/realms/E-Shop/protocol/openid-connect/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
+  // return response
+
+  // var myHeaders = new Headers();
+  // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  
+  // var urlencoded = new URLSearchParams();
+  // urlencoded.append("token", token);
+  // urlencoded.append("client_id", "frontend-app");
+  // urlencoded.append("client_secret", "spxkUSHmR4D3955m1E6asFBVD0pMi0mU");
+  
+  // var requestOptions = {
+  //   method: 'POST',
+  //   headers: myHeaders,
+  //   body: urlencoded,
+  // };
+  
+  // return await fetch("http://localhost:8182/auth/realms/e-shop/protocol/openid-connect/token/introspect", requestOptions);
+      
 };
 
 export { loginRequest, logoutRequest, registerRequest, introspectRequest };

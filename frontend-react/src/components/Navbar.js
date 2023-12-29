@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import LogoutButton from './LogoutButton';
 
-const Navbar = ({ username, role, onLogout }) => {
+const Navbar = () => {
+
+  const role = localStorage.getItem('role')
+
   return (
     <div className="navbar">
       <div className="left-section">
@@ -14,22 +16,17 @@ const Navbar = ({ username, role, onLogout }) => {
       <div className="center-section">
         <h1 className="logo">E-SHOP</h1>
       </div>
-      {/* <div className="right-section">
+      <div className="right-section">
         {role === 'customer' && (
           <Link to="/products/basket" className="cart-button">
-            Cart
-          </Link>
-        )}
-      </div> */}
-      <div className="right-section">
-        <Link to="/products/basket" className="cart-button">
-          <img src={`${process.env.PUBLIC_URL}/cart.png`}
+            <img src={`${process.env.PUBLIC_URL}/cart.png`}
                 alt="Cart"
                 width="24"
-                height="24"></img>
-        </Link>
+                height="24" />
+          </Link>
+        )}
       </div>
-        <LogoutButton />
+      <LogoutButton />
     </div>
   );
 };

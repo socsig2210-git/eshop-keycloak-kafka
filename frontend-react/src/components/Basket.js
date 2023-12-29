@@ -1,10 +1,13 @@
 import React from "react";
+import MainLayout from "./MainLayout";
 
 const Basket = () => {
     return ( 
-        <>
-            <h1>BASKET</h1>   
-        </>
+        <div>
+            <MainLayout>
+                <h1>BASKET</h1>   
+            </MainLayout>
+        </div>
     )
 }
 
