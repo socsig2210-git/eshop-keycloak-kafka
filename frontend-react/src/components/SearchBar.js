@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('id');
+  const [selectedFilter, setSelectedFilter] = useState('title');
 
   const handleInputChange = (event) => setSearchTerm(event.target.value);
   const handleFilterChange = (event) => setSelectedFilter(event.target.value);
@@ -23,9 +23,9 @@ const SearchBar = ({ onSearch }) => {
           className="search-input"
         />
         <select value={selectedFilter} onChange={handleFilterChange} className="filter-dropdown">
-          <option value="id">ID</option>
-          <option value="name">Name</option>
-          <option value="username">Username</option>
+          <option value="title">Title</option>
+          <option value="id">Id</option>
+          <option value="seller">Seller</option>
         </select>
         <button onClick={handleSearch} className="search-button">
           Search

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLayout from './MainLayout';
-import ProductsList from './ProductsList'
 import SearchBar from './SearchBar';
+import ProductsList from './ProductsList';
+import { reqProducts, reqProductsFilter } from '../services/ProductsService'
+
 
 const Products = () => {
 //   const { authenticated } = useAuth();
@@ -10,29 +12,92 @@ const Products = () => {
 //     // Redirect to the home page or login page
 //     return <Redirect to="/" />;
 //   }
+  const [products, setProducts] = useState([]);
 
-  const sampleProducts = [
-    { id: 1, title: 'Product 1', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 19.99, quantity: 10, seller: 'Seller 1' },
-    { id: 2, title: 'Product 2', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 29.99, quantity: 5, seller: 'Seller 2' },
-    { id: 3, title: 'Product 3', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 39.99, quantity: 5, seller: 'Seller 3' },
-    { id: 4, title: 'Product 4', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 49.99, quantity: 5, seller: 'Seller 4' },
-    { id: 5, title: 'Product 5', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 59.99, quantity: 5, seller: 'Seller 5' },
-    { id: 6, title: 'Product 6', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 69.99, quantity: 5, seller: 'Seller 6' },
-    { id: 7, title: 'Product 7', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 79.99, quantity: 5, seller: 'Seller 7' },
-    { id: 8, title: 'Product 8', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 89.99, quantity: 5, seller: 'Seller 8' },
-    { id: 9, title: 'Product 9', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 99.99, quantity: 5, seller: 'Seller 9' },
-    { id: 10, title: 'Product 10', img_path: `${process.env.PUBLIC_URL}/items/dunk.jpeg`, price: 109.99, quantity: 5, seller: 'Seller 10' },
-    // Add more products as needed
-  ];
+  const handleSearch = async(value, filter) =>{
+    try {
+      const response = await reqProductsFilter(value, filter);
+      setProducts(response.data)
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  }
 
-// onSearch () => implement backend request depending on filters and input
+  const fetchProducts = async () => {
+    try {
+      // Make API request with the filter parameter
+      const response = await reqProducts();
+      setProducts(response.data)
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts()
+  }, []);
+
   return (
     <MainLayout>
       PRODUCTS
-      <SearchBar /> 
-      <ProductsList products={sampleProducts} key={null}/>
+      <SearchBar onSearch={handleSearch}/> 
+      <ProductsList products={products} key={null}/>
     </MainLayout>
   );
 };
 
 export default Products;
+
+// import React, { useState, useEffect } from 'react';
+// import MainLayout from './MainLayout';
+// import SearchBar from './SearchBar';
+// import ProductsList from './ProductsList';
+// import { reqProducts } from '../services/ProductsService'
+
+// const Products = () => {
+//   // State for storing products data
+//   const [products, setProducts] = useState([]);
+
+//   // State for storing search filter (e.g., ID)
+//   const [searchFilter, setSearchFilter] = useState('');
+
+//   // Function to fetch products from the API
+//   const fetchProducts = async (filter) => {
+//     try {
+//       // Make API request with the filter parameter
+//       const data = await reqProducts;
+//       console.log(data)
+//       // const data = await response.json();
+
+//       // Update the state with the fetched products
+//       setProducts(data);
+//     } catch (error) {
+//       console.error('Error fetching products:', error);
+//     }
+//   };
+
+//   // Effect to fetch products when the page is loaded
+//   useEffect(() => {
+//     fetchProducts('');
+//   }, []); // Empty dependency array means this effect runs once on component mount
+
+//   // Function to handle search button click
+//   const handleSearch = () => {
+//     // Call the fetchProducts function with the searchFilter
+//     fetchProducts(searchFilter);
+//   };
+
+//   return (
+//     <MainLayout>
+//       <h1>PRODUCTS</h1>
+//       <SearchBar
+//         value={searchFilter}
+//         onChange={(e) => setSearchFilter(e.target.value)}
+//         onSearch={handleSearch}
+//       />
+//       <ProductsList products={products} />
+//     </MainLayout>
+//   );
+// };
+
+// export default Products;
