@@ -75,17 +75,27 @@ const introspectRequest = async(token) => {
   
   // TODO: FIND IF THERE IS A WAY
   const response = await axios.post(
-    `${CLIENT_URL}/auth`,
-    `client_id=frontend-app&client_secret=spxkUSHmR4D3955m1E6asFBVD0pMi0mU`,
+    `${CLIENT_URL}/token/introspect`,
+    `client_id=frontend-app&client_secret=spxkUSHmR4D3955m1E6asFBVD0pMi0mU&token=${token}`,
     {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Bearer ${token}`
+        "Accept": '*/*',
+        "Accept-Encoding": 'gzip, deflate, br',
+        "Connection": 'keep-alive',
+        // 'Authorization': `Bearer ${token}`
       },
     }
   );
 
   return response;
+
+  // return response;
+
+  // curl -X POST \
+  // http://keycloak-server/auth/realms/{realm-name}/protocol/openid-connect/token/introspect \
+  // -H 'Content-Type: application/x-www-form-urlencoded' \
+  // -d 'token={your-access-token}&client_id={your-client-id}&client_secret={your-client-secret}'
 
   // const clientId = 'frontend-app';
   //   const redirectUri = 'http://localhost:3000/callback'; // Adjust to your actual redirect URI

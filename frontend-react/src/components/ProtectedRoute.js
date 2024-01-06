@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-// import { introspectRequest, loginRequest } from '../services/KeycloakService'
+import { introspectRequest, loginRequest } from '../services/KeycloakService'
 // import { useAuthCtx } from "../services/AuthProvider";
 
 const ProtectedRoute = () => {

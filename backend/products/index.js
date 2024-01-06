@@ -37,7 +37,6 @@ app.get("/products/id/:id", async(req, res) => {
     }
 });
 
-
 app.get("/products/title/:title", async(req, res) => {
     try {
         const title = req.params.title;

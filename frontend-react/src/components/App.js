@@ -6,6 +6,7 @@ import Products from './Products';
 import Orders from './Orders';
 import Basket from './Basket';
 import ProtectedRoute from './ProtectedRoute';
+import ProductDetails from './ProductDetails';
 import '../css/App.css';
 
 const App = () => {
@@ -31,7 +32,9 @@ const App = () => {
         }/>
         <Route element={<ProtectedRoute />}>
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/products/basket" element={<Basket />} />
+          <Route path="/myproducts" />
           <Route path="/orders" element={<Orders />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>

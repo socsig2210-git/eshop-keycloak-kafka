@@ -6,8 +6,7 @@ import { reqProducts, reqProductsFilter } from '../services/ProductsService'
 
 
 const Products = () => {
-//   const { authenticated } = useAuth();
-
+  
 //   if (!authenticated) {
 //     // Redirect to the home page or login page
 //     return <Redirect to="/" />;
@@ -39,7 +38,6 @@ const Products = () => {
 
   return (
     <MainLayout>
-      PRODUCTS
       <SearchBar onSearch={handleSearch}/> 
       <ProductsList products={products} key={null}/>
     </MainLayout>
