@@ -49,6 +49,15 @@ const findProduct = (productId) => {
     } else {
         return null;
     }
+};
+
+const calculateTotalPrice = () => {
+    const basket = getBasket();
+    let totalPrice = 0.00;
+    basket.forEach(product => {
+        totalPrice = totalPrice + (product.price*product.quantity);
+    });
+    return totalPrice;
 }
 
-export { getBasket, addToBasket, removeFromBasket, findProduct };
+export { getBasket, addToBasket, removeFromBasket, findProduct, calculateTotalPrice };

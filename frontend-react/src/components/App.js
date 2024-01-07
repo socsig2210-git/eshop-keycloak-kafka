@@ -8,6 +8,7 @@ import Basket from './Basket';
 import ProtectedRoute from './ProtectedRoute';
 import ProductDetails from './ProductDetails';
 import '../css/App.css';
+import MyProducts from './MyProducts';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(true);
@@ -32,10 +33,11 @@ const App = () => {
         }/>
         <Route element={<ProtectedRoute />}>
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/products/:id" element={<ProductDetails role="customer"/>} />
           <Route path="/products/basket" element={<Basket />} />
-          <Route path="/myproducts" />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/myproducts" element={<MyProducts />}/>
+          <Route path="/myproducts/:id" element={<ProductDetails role="seller" />}/>
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

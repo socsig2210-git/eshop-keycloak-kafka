@@ -31,16 +31,17 @@ const ProtectedRoute = () => {
     //TODO: fix the fucking active shit
     if(token){
         if(role === 'customer'
-        && !location.pathname.startsWith('/products')){
+        && !location.pathname.startsWith('/products')
+        && !location.pathname.startsWith('/orders')){
             return (
                 <Navigate to='/products' />
             );
         }
 
         if(role === 'seller'
-        && !location.pathname.startsWith('/orders')){
+        && !location.pathname.startsWith('/myproducts')){
             return (
-                <Navigate to='/orders' />
+                <Navigate to='/myproducts' />
             );
         }
         return (

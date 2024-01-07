@@ -14,18 +14,18 @@ const Login = ({ onSelectRegister }) => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       
       const loginResponse  = await loginRequest(username, password);
       
       if(loginResponse.status === 200){
         const data = loginResponse.data;
+        await localStorage.setItem('access_token', data.access_token);
 
         const decodeToken = await decodeJwt(data.access_token);
         
         localStorage.setItem("username", decodeToken.preferred_username);
-        localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('refresh_token', data.refresh_token);
         
         const roles = decodeToken.realm_access.roles;
@@ -34,7 +34,7 @@ const Login = ({ onSelectRegister }) => {
           navigate('products');
         } else if(roles.includes('seller')){
           localStorage.setItem('role', 'seller');
-          navigate('orders');
+          navigate('myproducts');
         } else {
           localStorage.clear();
           navigate('/');

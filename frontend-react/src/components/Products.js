@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MainLayout from './MainLayout';
 import SearchBar from './SearchBar';
 import ProductsList from './ProductsList';
@@ -12,11 +13,20 @@ const Products = () => {
 //     return <Redirect to="/" />;
 //   }
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearch = async(value, filter) =>{
     try {
       const response = await reqProductsFilter(value, filter);
       setProducts(response.data)
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  }
+
+  const handleClickProduct = (id) =>{
+    try {
+      navigate(`/products/${id}`)
     } catch (error) {
       console.error('Error fetching products:', error);
     }
@@ -39,7 +49,7 @@ const Products = () => {
   return (
     <MainLayout>
       <SearchBar onSearch={handleSearch}/> 
-      <ProductsList products={products} key={null}/>
+      <ProductsList products={products} handleClickProduct={handleClickProduct} key={null}/>
     </MainLayout>
   );
 };

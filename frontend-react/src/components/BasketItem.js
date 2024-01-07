@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { addToBasket, removeFromBasket } from "../services/BasketService";
 
-const BasketItem = ({product}) => {
+const BasketItem = ({product, handleTotalPriceChange}) => {
     const [quantity, setQuantity] = useState(product.quantity);
     const navigate = useNavigate();
 
@@ -11,6 +11,7 @@ const BasketItem = ({product}) => {
             setQuantity(quantity + 1);
             product.quantity++;
             addToBasket(product);
+            handleTotalPriceChange();
         }
     };
 
@@ -19,6 +20,7 @@ const BasketItem = ({product}) => {
             setQuantity(quantity - 1);
             product.quantity--;
             addToBasket(product);
+            handleTotalPriceChange();
         }
     };
 
@@ -51,7 +53,7 @@ const BasketItem = ({product}) => {
                     +
                 </button>
             </div>
-            <div className="shopping-cart-total-price">${product.price}</div>
+            <div className="shopping-cart-price">${product.price}</div>
         </div>
     );
 }

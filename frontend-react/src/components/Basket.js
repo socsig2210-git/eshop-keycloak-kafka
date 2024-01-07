@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import MainLayout from "./MainLayout";
 import BasketItem from "./BasketItem";
-import { getBasket } from "../services/BasketService";
+import { getBasket , calculateTotalPrice } from "../services/BasketService";
 
 const Basket = () => {
     
+    const [totalPrice, setTotalPrice] = useState(calculateTotalPrice);
+    const handleTotalPriceChange = () => setTotalPrice(calculateTotalPrice);
+
     return (
         <div>
             <MainLayout>
@@ -13,9 +16,13 @@ const Basket = () => {
                         Basket
                     </div>
                     {getBasket().map(product => (
-                        <BasketItem product={product} key={product.id} />
+                        <BasketItem product={product} handleTotalPriceChange={handleTotalPriceChange} key={product.id} />
                     ))}
+                    <div className="shopping-cart-total-price">
+                        Total: ${totalPrice.toFixed(2)}
+                    </div>
                 </div>
+                
             </MainLayout>
         </div>
     );
