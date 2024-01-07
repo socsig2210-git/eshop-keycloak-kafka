@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import MainLayout from "./MainLayout";
+import BasketItem from "./BasketItem";
+import { getBasket } from "../services/BasketService";
 
 const Basket = () => {
-    return ( 
+    
+    return (
         <div>
             <MainLayout>
-                <h1>BASKET</h1>   
+                <div className="shopping-cart">
+                    <div className="shopping-cart-title">
+                        Basket
+                    </div>
+                    {getBasket().map(product => (
+                        <BasketItem product={product} key={product.id} />
+                    ))}
+                </div>
             </MainLayout>
         </div>
-    )
+    );
 }
 
 export default Basket;

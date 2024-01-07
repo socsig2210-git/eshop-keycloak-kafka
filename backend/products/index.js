@@ -17,13 +17,12 @@ app.get("/products", async(req, res) => {
     try {
         const db = await connection;
         const results = await db.execute("SELECT * FROM Products");
-        console.log('tried');
         res.send(results[0]);
     } catch (error) {
         console.error("Error fetching products:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
-})
+});
 
 app.get("/products/id/:id", async(req, res) => {
     try {
@@ -47,7 +46,7 @@ app.get("/products/title/:title", async(req, res) => {
         console.error("Error fetching products:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
-})
+});
 
 app.get("/products/seller/:seller", async(req, res) => {
     try {
@@ -63,4 +62,4 @@ app.get("/products/seller/:seller", async(req, res) => {
 
 app.listen(port, () => {
     console.log(`listening in port ${port}`)
-})
+});
