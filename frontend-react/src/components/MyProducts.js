@@ -12,14 +12,14 @@ const MyProducts = () => {
   const fetchProducts = async () => {
     try {
       // Make API request with the filter parameter
-      const response = await reqProductsFilter(localStorage.getItem('username'),'seller');
+      const response = await reqProductsFilter(localStorage.getItem('username'), 'seller');
       setProducts(response.data)
     } catch (error) {
       console.error('Error fetching products:', error);
     }
   };
-  
-  const handleClickProduct = (id) =>{
+
+  const handleClickProduct = (id) => {
     try {
       navigate(`/myproducts/${id}`)
     } catch (error) {
@@ -33,7 +33,11 @@ const MyProducts = () => {
 
   return (
     <MainLayout>
-      <ProductsList products={products} handleClickProduct={handleClickProduct} key={null}/>
+      <div className="search-bar-container">
+        <button className="stock-update-button" onClick={() => navigate('/myproducts/add')}>Add new Product</button>
+      </div>
+      <ProductsList products={products} handleClickProduct={handleClickProduct} key={null} />
+
     </MainLayout>
   );
 };

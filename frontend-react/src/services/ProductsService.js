@@ -57,3 +57,25 @@ export const reqDeleteProduct = async(id) => {
     `/products/${id}`
   )
 };
+
+export const reqPostProduct = async(product) => {
+  create();
+  return await axiosInstance.post(
+    `/products`,
+    product
+  );
+};
+
+// TODO: FOR IMAGE UPLAODING
+
+// export const reqPostProduct = async(product) => {
+//   create();
+//   return await axiosInstance.post(
+//     `/products`,
+//     product, {
+//       headers: {
+//         "Content-type": 'multipart/form-data',
+//       } 
+//     },
+//   );
+// };

@@ -34,7 +34,7 @@ const validateTokenMiddleware = async (req, res, next) => {
         if (!introspectData.active) {
             return res.status(401).json({ error: 'Token is not valid' });
         }
-        console.log(introspectData);
+        // console.log(introspectData);
 
         const username = introspectData.username;
         const roles = introspectData.realm_access.roles;
@@ -116,7 +116,7 @@ app.put("/products/:id", validateTokenMiddleware, async (req, res) => {
         if (roles.includes("seller")){
             const db = await connection;
             const results = await db.execute(`UPDATE Products SET quantity=${stock} WHERE User_username = '${user}' AND Id = ${productId};`)
-            res.send(results[0]);
+            res.send({ id: productId, stock: stock });
         }
 
     } catch (error) {
@@ -134,15 +134,87 @@ app.delete("/products/:id", validateTokenMiddleware, async (req, res) => {
         if (roles.includes("seller")){
             const db = await connection;
             const results = await db.execute(`DELETE FROM Products WHERE User_username = '${user}' AND Id = ${productId};`)
-            res.send(results[0]);
+            res.send({ id: productId });
         }
     } catch (error) {
         console.error("Error deleting products:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
-})
+});
 
-// DELETE
+app.post("/products", validateTokenMiddleware, async(req, res) => {
+    try {
+        const user = req.user.username;
+        const roles = req.user.roles;
+        
+        if (roles.includes("seller")) {
+            // Access form data
+            const title = req.body.title;
+            const price = req.body.price;
+            const quantity = req.body.quantity;
+
+            const db = await connection;
+            const results = await db.execute(
+                `INSERT INTO Products (title, img, price, quantity, User_username)
+                 VALUES('${title}', 'dunk.jpeg', '${price}', ${quantity}, '${user}');`
+            );
+            res.send(req.body);
+        }
+    } catch (error) {
+        console.error("Error adding product: ", error);
+        res.status(500).json({error: "Internal Server Error"});
+    }
+});
+
 app.listen(port, () => {
     console.log(`listening in port ${port}`)
 });
+
+// TODO: FOR IMAGE UPLAODING
+
+// const express = require('express');
+// const multer = require('multer');
+// const bodyParser = require('body-parser');
+
+// const app = express();
+// const port = 3000;
+
+// // Set up multer for handling file uploads
+// const storage = multer.memoryStorage(); // Use memory storage for simplicity
+// const upload = multer({ storage: storage });
+
+// // Set up body-parser for parsing other form data
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+
+// // Route for handling the POST request
+// app.post('/your-api-endpoint', upload.single('image'), (req, res) => {
+//   try {
+//     // Access form data
+//     const title = req.body.title;
+//     const price = req.body.price;
+//     const stock = req.body.stock;
+
+//     // Access file data
+//     const imageBuffer = req.file.buffer; // Buffer containing the file data
+//     const imageOriginalName = req.file.originalname; // Original name of the file
+
+//     // Handle the data as needed
+//     console.log('Title:', title);
+//     console.log('Price:', price);
+//     console.log('Stock:', stock);
+//     console.log('Image Original Name:', imageOriginalName);
+    
+//     // In a real-world scenario, you might save the file to disk or process it further
+
+//     // Send a response
+//     res.status(200).json({ message: 'Product added successfully' });
+//   } catch (error) {
+//     console.error('Error handling the request:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
+
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });

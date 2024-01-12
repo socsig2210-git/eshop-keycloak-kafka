@@ -9,6 +9,7 @@ import ProtectedRoute from './ProtectedRoute';
 import ProductDetails from './ProductDetails';
 import '../css/App.css';
 import MyProducts from './MyProducts';
+import AddProduct from './AddProduct';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(true);
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/orders" element={<Orders />} />
           <Route path="/myproducts" element={<MyProducts />}/>
           <Route path="/myproducts/:id" element={<ProductDetails role="seller" />}/>
+          <Route path="/myproducts/add" element={<AddProduct role="seller" />}/>
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

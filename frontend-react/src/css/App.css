@@ -22,7 +22,7 @@ height: 100vh;
     display: block;
 }
 
-#register-form, #login-form {
+#register-form, #login-form, #product-form {
     display: flex;
     align-items: center;
     justify-content: center;
