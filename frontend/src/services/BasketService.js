@@ -5,6 +5,10 @@ const getBasket = () => {
     return JSON.parse(localStorage.getItem("basket")) || [];
 };
 
+const clearBasket = () => {
+    localStorage.removeItem('basket');
+}
+
 // Both adds and edits products to basket
 const addToBasket = (productToAdd) => {
     const basket = getBasket();
@@ -60,4 +64,20 @@ const calculateTotalPrice = () => {
     return totalPrice;
 }
 
-export { getBasket, addToBasket, removeFromBasket, findProduct, calculateTotalPrice };
+const getProductsForOrder = () => {
+    const basket = getBasket();
+    let orderProducts = [];
+    basket.forEach(product => {
+        const orderProduct = {
+            product_id: product.id,
+            title: product.title,
+            amount: product.quantity
+        };
+
+        orderProducts.push(orderProduct);
+    });
+
+    return orderProducts;
+}
+
+export { getBasket, clearBasket, addToBasket, removeFromBasket, findProduct, calculateTotalPrice, getProductsForOrder };

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const kafka = require('./kafka')
 
 const port = process.env.port || 5001;
 
@@ -79,7 +80,7 @@ app.post("/orders", validateTokenMiddleware, async (req, res) => {
         const username = req.user.username;
         const roles = req.user.roles;
 
-        const products = req.body.products; // maybe json.stringify?
+        const products = JSON.stringify(req.body.products); // maybe json.stringify?
         const total_price = req.body.total_price;
 
         if(roles.includes("customer")){    
@@ -89,7 +90,12 @@ app.post("/orders", validateTokenMiddleware, async (req, res) => {
                  VALUES('${products}', ${total_price}, 'pending', '${username}');`
             );
             
-            res.send(results[0]);
+            res.send("ok");
+            kafka.kafkaProducer({
+                orderId: results[0].insertId,
+                products: req.body.products
+            });
+            // const order = JSON.stringify({Id: })
         }
     } catch (error) {
         console.error("Error posting order:", error);

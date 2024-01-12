@@ -340,6 +340,21 @@ height: 100vh;
   font-size: 18px;
   font-weight: 400;
 }
+
+.shopping-cart-order-button {
+  display: flex;
+  justify-content: center;
+}
+
+.shopping-cart-order-button button {
+  background-color: #263e4e;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
  
 .shopping-cart-item {
   padding: 20px 30px;

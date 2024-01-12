@@ -11,7 +11,7 @@ const create = () => {
       "Authorization": `Bearer ${localStorage.getItem("access_token")}`
     }
   });
-}
+};
 
 // Request functions
 export const reqProducts = async () => {

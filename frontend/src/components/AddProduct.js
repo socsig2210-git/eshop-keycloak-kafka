@@ -27,7 +27,7 @@ const AddProduct = () => {
     try {
         const response = await reqPostProduct(productData);
         console.log(response);
-        navigate('myproducts');
+        navigate('/myproducts');
     } catch (error) {
         console.error(error);
     }
