@@ -156,7 +156,7 @@ app.post("/products", validateTokenMiddleware, async(req, res) => {
             const db = await connection;
             const results = await db.execute(
                 `INSERT INTO Products (title, img, price, quantity, User_username)
-                 VALUES('${title}', 'dunk.jpeg', '${price}', ${quantity}, '${user}');`
+                 VALUES('${title}', 'dunk.jpeg', ${price}, ${quantity}, '${user}');`
             );
             res.send(req.body);
         }

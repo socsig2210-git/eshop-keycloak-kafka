@@ -75,12 +75,12 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_DATABASE: order_db
+      MYSQL_DATABASE: orders_db
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_ROOT_PASSWORD: admin 
     volumes:
-      - ./data2/orders-db:/var/lib/mysql   
+      - ./data/orders-db:/var/lib/mysql   
     networks:
       - orders
   
@@ -101,7 +101,7 @@ services:
       - '3310'
       # Where our data will be persisted
     volumes:
-      - ./data2/products-db:/var/lib/mysql
+      - ./data/products-db:/var/lib/mysql
     networks:
       - products
 
