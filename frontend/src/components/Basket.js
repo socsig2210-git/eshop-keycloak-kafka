@@ -26,7 +26,7 @@ const Basket = () => {
             console.log(response);
 
             clearBasket();
-            navigate('orders');
+            navigate('/orders');
 
         } catch (error) {
             console.error(error);

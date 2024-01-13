@@ -514,3 +514,48 @@ shopping-cart input:focus {
   border-radius: 5px;
   margin-top: 10px;
 }
+
+.order-tab-container {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: whitesmoke; /* Change background color to white */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: 'Arial', sans-serif; /* Use a preferred font family */
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-id {
+  font-weight: bold;
+  font-size: 1.2em; /* Increase font size for order ID */
+}
+
+.order-status {
+  font-weight: bold;
+  color: #333; /* Darken text color for better visibility */
+}
+
+.order-products {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-product {
+  margin-bottom: 5px;
+}
+
+.order-total-price {
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 1.1em; /* Adjust font size for total price */
+}

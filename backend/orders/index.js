@@ -66,7 +66,7 @@ app.get("/orders", validateTokenMiddleware, async (req, res) => {
         
         if(roles.includes("customer")){    
             const db = await connection;
-            const results = await db.execute(`SELECT * FROM Orders WHERE customer='${username}';`);
+            const results = await db.execute(`SELECT * FROM Orders WHERE customer='${username}' ORDER BY id DESC;`);
             res.send(results[0]);
         }
     } catch (error) {

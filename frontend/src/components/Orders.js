@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MainLayout from './MainLayout';
+import { reqOrders } from '../services/OrderService';
+import OrderTab from './OrderTab';
 
 const Orders = () => {
-//   const { authenticated } = useAuth();
+  const [orders, setOrders] = useState([]);
 
-//   if (!authenticated) {
-//     // Redirect to the home page or login page
-//     return <Redirect to="/" />;
-//   }
+  const fetchOrders = async () => {
+    try {
+      const response = await reqOrders();
+      setOrders(response.data)
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrders()
+  }, []);
 
   return (
     <MainLayout>
-      ORDERS
+      <div>
+      {orders.map((order) => 
+        <OrderTab key={order.id} order={order}/>
+      )}
+      </div>
     </MainLayout>
   );
 };
