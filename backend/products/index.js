@@ -23,21 +23,25 @@ const validateTokenMiddleware = async (req, res, next) => {
         }
 
         // Send a request to the Keycloak introspect endpoint
-        const keycloakResponse = await axios.post('http://localhost:8182/auth/realms/e-shop/protocol/openid-connect/token/introspect', {
+        const keycloakResponse = await axios.post('http://keycloak-w:8080/auth/realms/e-shop/protocol/openid-connect/token/introspect', {
             client_id: 'frontend-app',
             client_secret: 'spxkUSHmR4D3955m1E6asFBVD0pMi0mU',
             token: token,
         },
-        { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+        { 
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': 'localhost:8182' // If sent form diferrent host always returns { active: false }
+            } });
 
         const introspectData = keycloakResponse.data;
         
         // Check if the user is active
         if (!introspectData.active) {
+            console.log(introspectData);
             return res.status(401).json({ error: 'Token is not valid' });
         }
-        // console.log(introspectData);
-
+        
         const username = introspectData.username;
         const roles = introspectData.realm_access.roles;
 
@@ -160,7 +164,7 @@ app.post("/products", validateTokenMiddleware, async(req, res) => {
                 `INSERT INTO Products (title, img, price, quantity, User_username)
                  VALUES('${title}', 'dunk.jpeg', ${price}, ${quantity}, '${user}');`
             );
-            res.send(req.body);
+            res.send({ id: results[0].insertId });
         }
     } catch (error) {
         console.error("Error adding product: ", error);

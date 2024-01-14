@@ -10,6 +10,8 @@ const ProtectedRoute = () => {
     const token = localStorage.getItem('access_token');
     const role = localStorage.getItem('role');
     
+
+    // Cannot access introspect response due to cors policy
     // useEffect(() => {
 
     //     const introspect = async() => {
@@ -28,7 +30,6 @@ const ProtectedRoute = () => {
 
     // const active = data.active;
 
-    //TODO: fix the fucking active shit
     if(token){
         if(role === 'customer'
         && !location.pathname.startsWith('/products')

@@ -26,8 +26,7 @@ const AddProduct = () => {
     console.log('Product Data:', productData);
     try {
         const response = await reqPostProduct(productData);
-        console.log(response);
-        navigate('/myproducts');
+        navigate(`/myproducts/${response.data.id}`);
     } catch (error) {
         console.error(error);
     }

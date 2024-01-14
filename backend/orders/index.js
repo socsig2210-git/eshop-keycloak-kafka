@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 // Auth Middleware
 const validateTokenMiddleware = async (req, res, next) => {
     try {
+
+        // TODO: Fix req.user and req.roles to work with jwtHelper.
+
         const token = req.headers['authorization'].split(' ')[1];
         // Check if the token is present
         if (!token) {
@@ -22,12 +25,17 @@ const validateTokenMiddleware = async (req, res, next) => {
         }
 
         // Send a request to the Keycloak introspect endpoint
-        const keycloakResponse = await axios.post('http://localhost:8182/auth/realms/e-shop/protocol/openid-connect/token/introspect', {
+        const keycloakResponse = await axios.post('http://keycloak-w:8080/auth/realms/e-shop/protocol/openid-connect/token/introspect', {
             client_id: 'frontend-app',
             client_secret: 'spxkUSHmR4D3955m1E6asFBVD0pMi0mU',
             token: token,
         },
-        { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+        { 
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': 'localhost:8182' // If sent form diferrent host always returns { active: false }
+            } 
+        });
 
         const introspectData = keycloakResponse.data;
         

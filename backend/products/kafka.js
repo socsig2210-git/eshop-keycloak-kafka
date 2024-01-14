@@ -3,7 +3,7 @@ const { handleProducts } = require('./services')
 
 const kafka = new Kafka({
   clientId: 'products-app',
-  brokers: ['localhost:8097'],
+  brokers: ['kafka:19092'],
   retry: {
     initialRetryTime: 2000,
     retries: 5
