@@ -7,6 +7,7 @@ const AddProduct = () => {
     title: '',
     price: '',
     quantity: '',
+    image: 'dunk.jpeg'
   });
 
   const navigate = useNavigate();
@@ -41,6 +42,12 @@ const AddProduct = () => {
                 <label htmlFor="title">Title:</label>
                 <input type="text" name="title" value={productData.title} onChange={handleChange} required />
 
+                <label htmlFor="image">Image:</label>
+                <select name="image" value={productData.image} onChange={handleChange} required>
+                  <option value="dunk.jpeg">Shoes</option>
+                  <option value="pc.jpeg">PC</option>
+                  <option value="laptop.jpeg">Laptop</option>
+                </select>
                 {/* <label htmlFor="image">Image:</label>
                 <input type="file" name="image" onChange={handleChange} accept="image/*" required /> */}
 

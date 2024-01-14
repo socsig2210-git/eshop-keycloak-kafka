@@ -14,21 +14,6 @@ const connect = async () => {
 
     console.log("Connected to MySQL database");
 
-    // // Create a table
-    // const createTableQuery = `
-    //     CREATE TABLE IF NOT EXISTS products (
-    //         id INT AUTO_INCREMENT PRIMARY KEY,
-    //         title VARCHAR(255),
-    //         img VARCHAR(255),
-    //         price DECIMAL(10, 2),
-    //         quantity INT,
-    //         user_product VARCHAR(255)
-    //     )
-    //     `;
-
-    // const table = await connection.query(createTableQuery);
-    // console.log(table);
-
     return connection;
   } catch (e) {
     console.error("Error connecting to MySQL:", e);

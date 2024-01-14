@@ -51,7 +51,7 @@ const ProductDetail = ({role}) => {
                     <div className="product-details-container">
                         <div className="product-details-image">
                             <div className="product-details-title">{product.title}</div>
-                            <img src={`${process.env.PUBLIC_URL}/items/${product.img}`} alt={product.title} />
+                            <img src={`${process.env.PUBLIC_URL}/items/${product.img}`} alt={product.title} style={{ width: '225px', height: '225px' }}/>
                             <div className="product-details-id">ID: {product.id}, Seller: {product.User_username}</div>
                         </div>
                         <div className="product-details-info">

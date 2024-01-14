@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
@@ -33,7 +34,7 @@ const validateTokenMiddleware = async (req, res, next) => {
         { 
             headers: { 
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Host': 'localhost:8182' // If sent form diferrent host always returns { active: false }
+                'Host': `${process.env.EXTERNAL_IP}:8182` // If sent form diferrent host always returns { active: false }
             } 
         });
 
@@ -103,7 +104,6 @@ app.post("/orders", validateTokenMiddleware, async (req, res) => {
                 orderId: results[0].insertId,
                 products: req.body.products
             });
-            // const order = JSON.stringify({Id: })
         }
     } catch (error) {
         console.error("Error posting order:", error);

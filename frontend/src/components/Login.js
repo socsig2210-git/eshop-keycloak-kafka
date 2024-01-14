@@ -16,7 +16,6 @@ const Login = ({ onSelectRegister }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      
       const loginResponse  = await loginRequest(username, password);
       
       if(loginResponse.status === 200){
@@ -72,73 +71,3 @@ const Login = ({ onSelectRegister }) => {
 };
 
 export default Login;
-
-
-
-
-  // const handleLogin = async (e) => {
-  //   //prevent reload page onsubmit
-  //   e.preventDefault()
-
-  //   try {
-  //     var myHeaders = new Headers();
-  //     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-  
-  //     var urlencoded = new URLSearchParams();
-  //     urlencoded.append("username", username);
-  //     urlencoded.append("password", password);
-  //     urlencoded.append("client_id", "frontend-app");
-  //     urlencoded.append("client_secret", "spxkUSHmR4D3955m1E6asFBVD0pMi0mU");
-  //     urlencoded.append("grant_type", "password");
-  
-  //     var requestOptions = {
-  //       method: 'POST',
-  //       headers: myHeaders,
-  //       body: urlencoded,
-  //       redirect: 'follow'
-  //     };
-  
-  //     const loginResponse = await fetch("http://localhost:8182/auth/realms/e-shop/protocol/openid-connect/token", requestOptions)
-      
-  //     if(loginResponse.ok){
-  //       const login = await loginResponse.json()
-  //       const token = login.access_token
-        
-
-  //       // CAN INTROSPECT AFTER LANDING AT PRODUCTS/ORDERS PAGE
-  //       // var authRequestOptions = {
-  //       //   method: 'POST',
-  //       //   headers: myHeaders,
-
-  //       // }
-
-  //       // const authResponse = await fetch("localhost:8182/auth/realms/e-shop/protocol/openid-connect/token/introspect")
-        
-  //       //store in localstorage username, email, role (customer, seller) and refresh_token
-  //       const decodeToken = await decodeJwt(token);
-        
-  //       localStorage.setItem("username", decodeToken.preferred_username);
-  //       localStorage.setItem('access_token', token);
-  //       localStorage.setItem('refresh_token', login.refresh_token);
-        
-  //       const roles = decodeToken.realm_access.roles;
-  //       if(roles.includes('customer')){
-  //         localStorage.setItem('role', 'customer');
-  //         navigate('products');
-  //       } else if(roles.includes('seller')){
-  //         localStorage.setItem('role', 'seller');
-  //         navigate('orders');
-  //       } else {
-  //         localStorage.clear();
-  //         navigate('/');
-  //       }
-
-  //     }else{
-  //       const err = await loginResponse.json()
-  //       console.log(err) 
-  //     }
-  
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }

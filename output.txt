@@ -1,0 +1,296 @@
+[
+    {
+        "Id": "a75490c041b5d602f9a35d778f8675ad18c8e9f26c53d5dbf8181f19ad298d41",
+        "Created": "2024-01-14T15:42:56.02620959Z",
+        "Path": "/opt/jboss/tools/docker-entrypoint.sh",
+        "Args": [
+            "-b",
+            "0.0.0.0"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 98114,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2024-01-14T15:42:57.069431946Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:011a708d97bf2f71cd182706518d34d0e7c9f89ff224bfeda35dcfdc0a63333c",
+        "ResolvConfPath": "/var/lib/docker/containers/a75490c041b5d602f9a35d778f8675ad18c8e9f26c53d5dbf8181f19ad298d41/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/a75490c041b5d602f9a35d778f8675ad18c8e9f26c53d5dbf8181f19ad298d41/hostname",
+        "HostsPath": "/var/lib/docker/containers/a75490c041b5d602f9a35d778f8675ad18c8e9f26c53d5dbf8181f19ad298d41/hosts",
+        "LogPath": "/var/lib/docker/containers/a75490c041b5d602f9a35d778f8675ad18c8e9f26c53d5dbf8181f19ad298d41/a75490c041b5d602f9a35d778f8675ad18c8e9f26c53d5dbf8181f19ad298d41-json.log",
+        "Name": "/keycloak-w",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "eshop-keycloak-kafka_default",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8182"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "Mounts": [
+                {
+                    "Type": "volume",
+                    "Source": "eshop-keycloak-kafka_keycloak-realm-data",
+                    "Target": "/opt/jboss/keycloak/standalone/data",
+                    "VolumeOptions": {}
+                }
+            ],
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/651e60e2968abd50e13440b2bff1185150d9afafbb8c57045e58a0680ca6ef3a-init/diff:/var/lib/docker/overlay2/6b9a8084d83bb2e8224ad8b32215036d87d936ad42549136760ff87dd4860578/diff:/var/lib/docker/overlay2/6aad15114dd418546f973ffca86c72aacfa96953fc6b9d8fd17460e527be8d30/diff:/var/lib/docker/overlay2/d20b29e983ad7c900e4be2c0e7efc6ee8f6c75eb0ea1aa6db3c8ab1711e0a88f/diff:/var/lib/docker/overlay2/8048c58bedcc9aab061e998465fe75cd5e37dc4e1daa0eb803fb70b1c1d2e3f3/diff:/var/lib/docker/overlay2/89707617a6c452c1cbe6ea7883e39dbb628ba7f48640efd1c65d2a2ac9442dfb/diff",
+                "MergedDir": "/var/lib/docker/overlay2/651e60e2968abd50e13440b2bff1185150d9afafbb8c57045e58a0680ca6ef3a/merged",
+                "UpperDir": "/var/lib/docker/overlay2/651e60e2968abd50e13440b2bff1185150d9afafbb8c57045e58a0680ca6ef3a/diff",
+                "WorkDir": "/var/lib/docker/overlay2/651e60e2968abd50e13440b2bff1185150d9afafbb8c57045e58a0680ca6ef3a/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "eshop-keycloak-kafka_keycloak-realm-data",
+                "Source": "/var/lib/docker/volumes/eshop-keycloak-kafka_keycloak-realm-data/_data",
+                "Destination": "/opt/jboss/keycloak/standalone/data",
+                "Driver": "local",
+                "Mode": "z",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "a75490c041b5",
+            "Domainname": "",
+            "User": "1000",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "8080/tcp": {},
+                "8443/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "KEYCLOAK_USER=admin",
+                "KEYCLOAK_PASSWORD=admin",
+                "DB_VENDOR=mysql",
+                "DB_ADDR=mysql-kc",
+                "DB_PORT=3306",
+                "DB_USER=admin",
+                "DB_PASSWORD=admin",
+                "DB_DATABASE=keycloak_db",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "container=oci",
+                "KEYCLOAK_VERSION=16.1.1",
+                "JDBC_POSTGRES_VERSION=42.2.5",
+                "JDBC_MYSQL_VERSION=8.0.22",
+                "JDBC_MARIADB_VERSION=2.5.4",
+                "JDBC_MSSQL_VERSION=8.2.2.jre11",
+                "LAUNCH_JBOSS_IN_BACKGROUND=1",
+                "PROXY_ADDRESS_FORWARDING=false",
+                "JBOSS_HOME=/opt/jboss/keycloak",
+                "LANG=en_US.UTF-8"
+            ],
+            "Cmd": [
+                "-b",
+                "0.0.0.0"
+            ],
+            "Image": "jboss/keycloak",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/opt/jboss/tools/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "architecture": "x86_64",
+                "build-date": "2021-11-03T13:56:27.085530",
+                "com.docker.compose.config-hash": "7e618497a6af1784edd3e11acbd35c293f345f235a95913691471046441c723b",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "mysql-kc:service_started:false",
+                "com.docker.compose.image": "sha256:011a708d97bf2f71cd182706518d34d0e7c9f89ff224bfeda35dcfdc0a63333c",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "eshop-keycloak-kafka",
+                "com.docker.compose.project.config_files": "/home/socsig2210/Desktop/cloud-proj/eshop-keycloak-kafka/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/socsig2210/Desktop/cloud-proj/eshop-keycloak-kafka",
+                "com.docker.compose.service": "keycloak-w",
+                "com.docker.compose.version": "2.20.2",
+                "com.redhat.build-host": "cpt-1001.osbs.prod.upshift.rdu2.redhat.com",
+                "com.redhat.component": "ubi8-minimal-container",
+                "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI",
+                "description": "The Universal Base Image Minimal is a stripped down image that uses microdnf as a package manager. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly.",
+                "distribution-scope": "public",
+                "io.buildah.version": "1.23.1",
+                "io.k8s.description": "The Universal Base Image Minimal is a stripped down image that uses microdnf as a package manager. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly.",
+                "io.k8s.display-name": "Red Hat Universal Base Image 8 Minimal",
+                "io.openshift.expose-services": "",
+                "io.openshift.tags": "minimal rhel8",
+                "maintainer": "Red Hat, Inc.",
+                "name": "ubi8-minimal",
+                "release": "204",
+                "summary": "Provides the latest release of the minimal Red Hat Universal Base Image 8.",
+                "url": "https://access.redhat.com/containers/#/registry.access.redhat.com/ubi8-minimal/images/8.5-204",
+                "vcs-ref": "7ffc2d965ea414fc38f42d93090d967a5aee2c33",
+                "vcs-type": "git",
+                "vendor": "Red Hat, Inc.",
+                "version": "8.5"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "9388e61e18ae2e24d40d6983446ab161344595cfc438d27085914361b47bb01e",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8182"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8182"
+                    }
+                ],
+                "8443/tcp": null
+            },
+            "SandboxKey": "/var/run/docker/netns/9388e61e18ae",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "eshop-keycloak-kafka_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "keycloak-w",
+                        "keycloak-w",
+                        "a75490c041b5"
+                    ],
+                    "NetworkID": "6c52f479ea21239d717156553761bb2676303c5348c3814f9c18e577c79655e4",
+                    "EndpointID": "87390682b01b96e0eb1e76348b456dd8453b6e184da3b17d3e165c892a658348",
+                    "Gateway": "172.27.0.1",
+                    "IPAddress": "172.27.0.6",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:1b:00:06",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]

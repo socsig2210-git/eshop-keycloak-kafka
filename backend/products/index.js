@@ -1,8 +1,8 @@
-const kafka = require('./kafka') //initialize kafka consumerc
-
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const kafka = require('./kafka') 
 
 const port = process.env.port || 5000;
 
@@ -31,8 +31,9 @@ const validateTokenMiddleware = async (req, res, next) => {
         { 
             headers: { 
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Host': 'localhost:8182' // If sent form diferrent host always returns { active: false }
-            } });
+                'Host': `${process.env.EXTERNAL_IP}:8182` // If sent form diferrent host always returns { active: false }
+            } 
+        });
 
         const introspectData = keycloakResponse.data;
         
@@ -158,11 +159,12 @@ app.post("/products", validateTokenMiddleware, async(req, res) => {
             const title = req.body.title;
             const price = req.body.price;
             const quantity = req.body.quantity;
+            const image = req.body.image;
 
             const db = await connection;
             const results = await db.execute(
                 `INSERT INTO Products (title, img, price, quantity, User_username)
-                 VALUES('${title}', 'dunk.jpeg', ${price}, ${quantity}, '${user}');`
+                 VALUES('${title}', '${image}', ${price}, ${quantity}, '${user}');`
             );
             res.send({ id: results[0].insertId });
         }

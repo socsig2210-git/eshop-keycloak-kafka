@@ -23,12 +23,11 @@ services:
     depends_on:
       - mysql-kc
     volumes:
-      - keycloak-realm-data:/opt/jboss/keycloak/standalone/data
-      # - ./standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
+      - ./data/realms:/opt/jboss/keycloak/standalone/data
     networks:
       - default
-    # extra_hosts:
-    #  - "host.docker.internal:host-gateway"
+    # volumes:
+    #   - keycloak-realm-data:/opt/jboss/keycloak/standalone/data
 
   # KAFKA
   zookeeper:
@@ -86,7 +85,6 @@ services:
       restart: always
 
   # NODE CONTAINERS
-
   eshop-frontend:
     container_name: eshop-frontend
     depends_on:
@@ -96,6 +94,8 @@ services:
       - kafka
     build: 
       context: ./frontend
+    environment:
+      - EXTERNAL_IP=localhost
     ports:
       - "3000:3000"
     networks:
@@ -107,6 +107,8 @@ services:
     container_name: products-service
     build: 
       context: ./backend/products
+    env_file:
+      - .env
     ports:
       - "5000:5000"
     restart: always
@@ -124,6 +126,8 @@ services:
     container_name: orders-service
     build: 
       context: ./backend/orders
+    env_file:
+      - .env
     ports:
       - "5001:5001"
     restart: always
@@ -189,9 +193,11 @@ services:
       MYSQL_DATABASE: keycloak_db
       MYSQL_ROOT_PASSWORD: admin
     volumes:
-      - mysql-kc-volume:/var/lib/mysql
+      - ./data/kc-db:/var/lib/mysql
     networks:
       - default
+    # volumes:
+    #   - mysql-kc-volume:/var/lib/mysql
 
 networks:
   default:
