@@ -94,8 +94,6 @@ services:
       - kafka
     build: 
       context: ./frontend
-    environment:
-      - EXTERNAL_IP=localhost
     ports:
       - "3000:3000"
     networks:

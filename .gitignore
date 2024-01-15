@@ -5,6 +5,7 @@
 /frontend/package-lock.json
 /backend/orders/node_modules/
 /backend/products/node_modules/
+/data/
 /data2/
 /.pnp
 .pnp.js

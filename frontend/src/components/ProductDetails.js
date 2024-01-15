@@ -23,7 +23,7 @@ const ProductDetail = ({role}) => {
     const handleUpdateStock = async () => {
         try {
             const response = await reqEditProduct(id, stock);
-            console.log(response);
+            // console.log(response);
             window.location.reload();
         } catch (error) {
             console.error('Error updating product:', error);
@@ -33,7 +33,7 @@ const ProductDetail = ({role}) => {
     const handleDeleteProduct = async () => {
         try {
             const response = await reqDeleteProduct(id, stock);
-            console.log(response);
+            // console.log(response);
             window.location.reload();
         } catch (error) {
             console.error('Error deleting product:', error);
