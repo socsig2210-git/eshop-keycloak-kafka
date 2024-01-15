@@ -2,10 +2,11 @@ FROM node:21
 
 WORKDIR /app
 
-COPY *.js /app/
-COPY package.json /app/
+COPY package.json ./
 
 RUN npm install
+
+COPY . .
 
 EXPOSE 5001
 

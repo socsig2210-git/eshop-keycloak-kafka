@@ -8,7 +8,7 @@ services:
     image: jboss/keycloak
     ports:
       - 8182:8080
-    restart: unless-stopped
+    restart: always
     environment:
       # User and password for the Administration Console
       KEYCLOAK_USER: admin
@@ -102,6 +102,7 @@ services:
       - default
     volumes:
       - ./frontend:/app
+      - /app/node_modules
 
   products-service:
     container_name: products-service
@@ -119,6 +120,7 @@ services:
       - default
     volumes:
       - ./backend/products:/app
+      - /app/node_modules
     # extra_hosts:
     #  - "host.docker.internal:host-gateway"
 
@@ -138,6 +140,7 @@ services:
       - default
     volumes:
       - ./backend/orders:/app
+      - /app/node_modules
 
   # MYSQL CONTAINERS
   orders_db: 
